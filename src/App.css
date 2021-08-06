@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: space-around;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: orange;
 }
 
 .App-link {
@@ -31,6 +31,7 @@
   list-style: none;
   margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
+  cursor: pointer;
 }
 
 .tab-list-active {
