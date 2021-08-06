@@ -73,14 +73,15 @@ async function createNote() {
       <button onClick={createNote}>Create Note</button>
       <div style={{marginBottom: 30}}>
         {
-          <div key={note.id || note.name}>
-      <h2>{note.name}</h2>
-      <p>{note.description}</p>
-      <button onClick={() => deleteNote(note)}>Delete note</button>
-      {
-        note.image && <img src={note.image} style={{width: 400}} />
-      }
-    </div>
+          notes.map(note => (
+            <div key={note.id || note.name}>
+              <h2>{note.name}</h2>
+              <p>{note.description}</p>
+              <button onClick={() => deleteNote(note)}>Delete note</button>
+			  {
+				note.image && <img src={note.image} style={{width: 400}} />
+			  }
+            </div>
           ))
         }
       </div>
