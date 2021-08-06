@@ -84,15 +84,15 @@ async function createNote() {
 				{
 					note.image && <img src={note.image} style={{width: 400}} />
 				}
-            </div>
+					</div>
 				))
 				}
+			</div>
 			</div>
 			<div label="Logistic Results">
 				No results yet
 			</div>
 		</Tabs>
-	  </div>
 	  
       <AmplifySignOut />
     </div>
