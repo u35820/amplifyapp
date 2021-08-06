@@ -92,6 +92,12 @@ async function createNote() {
 			<div label="Logistic Results">
 				No results yet
 			</div>
+			<div label="Orchestrator">
+				No results yet
+			</div>
+			<div label="Robotis">
+				No results yet
+			</div>
 		</Tabs>
 	  
       <AmplifySignOut />
