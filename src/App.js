@@ -40,19 +40,27 @@ render() {
     <div className="App">
       <h1>Production Cell</h1>
 		<Tabs>
-			<div label="Quality Results">
-			<button onClick={fetchNotes}>Update Quality-Results</button>
-			<div style={{marginBottom: 30}}>
-			{
-				notes.map(note => (
-				<div key={note.id || note.opcuadata}>
-					<h2>{note.id}</h2>
-					<p>{note.opcuadata}</p>
+			<table>
+				<tr>
+				<td>
+				<div label="Quality Results">
+					<button onClick={fetchNotes}>Update Quality-Results</button>
+					<div style={{marginBottom: 30}}>
+					{
+						notes.map(note => (
+						<div key={note.id || note.opcuadata}>
+							<h2>{note.id}</h2>
+							<p>{note.opcuadata}</p>
+						</div>
+						))
+					}
 				</div>
-				))
-			}
-      </div>
-				<img src={this.state.fileUrl} />
+				</td>
+				<td>
+					<img src={this.state.fileUrl} title=fileUrl />
+				</td>
+				</tr>
+			</table>
 			</div>
 			<div label="Logistic Results">
 				No results yet
