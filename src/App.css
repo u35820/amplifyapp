@@ -1,5 +1,8 @@
 .App {
     text-align: center;
+    color: #232f3e;
+    background-color: white;
+    
 }
 
 .App-logo {
@@ -8,7 +11,7 @@
 }
 
 .App-header {
-    background-color: #61dafb;
+    background-color: #232f3e;
     min-height: 5vh;
     display: flex;
     align-items: center;
@@ -18,7 +21,7 @@
 }
 
 .App-link {
-    color: #61dafb;
+    color: #232f3e;
 }
 
 .tab-list {  
@@ -28,6 +31,7 @@
 
 .tab-list-item {
   display: inline-block;
+  background-color: orange;
   list-style: none;
   margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
@@ -36,6 +40,7 @@
 
 .tab-list-active {
   background-color: white;
+  color: #232f3e;
   border: solid #ccc;
   border-width: 1px 1px 0 1px;
 }

@@ -1,36 +1,45 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateNote = /* GraphQL */ `
-  subscription OnCreateNote {
-    onCreateNote {
-      id
-      name
-      description
-      createdAt
-      updatedAt
+export const onCreateLogisticsResult = /* GraphQL */ `
+  subscription OnCreateLogisticsResult(
+    $logistics_id: String
+    $opcua_data: [String]
+  ) {
+    onCreateLogisticsResult(
+      logistics_id: $logistics_id
+      opcua_data: $opcua_data
+    ) {
+      logistics_id
+      opcua_data
     }
   }
 `;
-export const onUpdateNote = /* GraphQL */ `
-  subscription OnUpdateNote {
-    onUpdateNote {
-      id
-      name
-      description
-      createdAt
-      updatedAt
+export const onUpdateLogisticsResult = /* GraphQL */ `
+  subscription OnUpdateLogisticsResult(
+    $logistics_id: String
+    $opcua_data: [String]
+  ) {
+    onUpdateLogisticsResult(
+      logistics_id: $logistics_id
+      opcua_data: $opcua_data
+    ) {
+      logistics_id
+      opcua_data
     }
   }
 `;
-export const onDeleteNote = /* GraphQL */ `
-  subscription OnDeleteNote {
-    onDeleteNote {
-      id
-      name
-      description
-      createdAt
-      updatedAt
+export const onDeleteLogisticsResult = /* GraphQL */ `
+  subscription OnDeleteLogisticsResult(
+    $logistics_id: String
+    $opcua_data: [String]
+  ) {
+    onDeleteLogisticsResult(
+      logistics_id: $logistics_id
+      opcua_data: $opcua_data
+    ) {
+      logistics_id
+      opcua_data
     }
   }
 `;
