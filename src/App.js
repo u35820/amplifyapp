@@ -3,7 +3,9 @@ import './App.css';
 import Tabs from "./components/Tabs"; 
 import Amplify, { API, Storage } from 'aws-amplify';
 import awsconfig from './aws-exports';
-Amplify.configure(awsconfig);
+import { withAuthenticator, S3Image } from 'aws-amplify-react-native';
+
+Amplify.configure(awsconfig)
 
 function App() { 
  return (
@@ -11,7 +13,7 @@ function App() {
       <h1>Production Cell</h1>
 		<Tabs>
 			<div label="Quality Results">
-				No results yet
+				<S3Image imgKey={public/_2021-5-10-85354_01a0c537-9269-4bf1-9ef4-4c081b4fe3f0.jpg} />
 			</div>
 			<div label="Logistic Results">
 				No results yet
