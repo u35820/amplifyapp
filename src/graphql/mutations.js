@@ -1,27 +1,45 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createLogisticsResult = /* GraphQL */ `
-  mutation CreateLogisticsResult($input: CreateLogisticsResultInput!) {
-    createLogisticsResult(input: $input) {
-      logistics_id
-      opcua_data
+export const createTodo = /* GraphQL */ `
+  mutation CreateTodo(
+    $input: CreateTodoInput!
+    $condition: ModelTodoConditionInput
+  ) {
+    createTodo(input: $input, condition: $condition) {
+      id
+      name
+      opcuadata
+      createdAt
+      updatedAt
     }
   }
 `;
-export const updateLogisticsResult = /* GraphQL */ `
-  mutation UpdateLogisticsResult($input: UpdateLogisticsResultInput!) {
-    updateLogisticsResult(input: $input) {
-      logistics_id
-      opcua_data
+export const updateTodo = /* GraphQL */ `
+  mutation UpdateTodo(
+    $input: UpdateTodoInput!
+    $condition: ModelTodoConditionInput
+  ) {
+    updateTodo(input: $input, condition: $condition) {
+      id
+      name
+      opcuadata
+      createdAt
+      updatedAt
     }
   }
 `;
-export const deleteLogisticsResult = /* GraphQL */ `
-  mutation DeleteLogisticsResult($input: DeleteLogisticsResultInput!) {
-    deleteLogisticsResult(input: $input) {
-      logistics_id
-      opcua_data
+export const deleteTodo = /* GraphQL */ `
+  mutation DeleteTodo(
+    $input: DeleteTodoInput!
+    $condition: ModelTodoConditionInput
+  ) {
+    deleteTodo(input: $input, condition: $condition) {
+      id
+      name
+      opcuadata
+      createdAt
+      updatedAt
     }
   }
 `;

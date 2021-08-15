@@ -3,9 +3,12 @@ import './App.css';
 import Tabs from "./components/Tabs"; 
 import Amplify, { API, Storage } from 'aws-amplify';
 import awsconfig from './aws-exports';
+import { listNotes } from './graphql/queries';
 
 
 Amplify.configure(awsconfig)
+
+const initialFormState = { id: '', opcuadata: '' }
 
 class App extends Component {
 	state = {fileUrl: ''}
@@ -20,6 +23,17 @@ class App extends Component {
 				console.log('error fetching image')
 			})
 	}
+	const [notes, setNotes] = useState([]);
+	const [formData, setFormData] = useState(initialFormState);
+  
+  useEffect(() => {
+    fetchNotes();
+  }, []);
+	
+async function fetchNotes() {
+    const apiData = await API.graphql({ query: listNotes });
+    setNotes(apiData.data.listNotes.items);
+  }
 
 render() { 
  return (
@@ -27,6 +41,17 @@ render() {
       <h1>Production Cell</h1>
 		<Tabs>
 			<div label="Quality Results">
+			<button onClick={fetchNotes}>Update Quality-Results</button>
+			<div style={{marginBottom: 30}}>
+			{
+				notes.map(note => (
+				<div key={note.id || note.opcuadata}>
+					<h2>{note.id}</h2>
+					<p>{note.opcuadata}</p>
+				</div>
+				))
+			}
+      </div>
 				<img src={this.state.fileUrl} />
 			</div>
 			<div label="Logistic Results">

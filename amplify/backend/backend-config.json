@@ -7,7 +7,24 @@
       "customAuth": false
     }
   },
-  "api": {},
+  "api": {
+    "QualityAPI": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 360,
+              "description": "apikeydes"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      }
+    }
+  },
   "storage": {
     "imagestorage": {
       "service": "S3",
