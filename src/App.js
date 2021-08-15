@@ -4,36 +4,15 @@ import Tabs from "./components/Tabs";
 import Amplify, { API, Storage } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { listNotes } from './graphql/queries';
+import { withAuthenticator, AmplifySignOut, S3Album, S3Image } from '@aws-amplify-react'
 
 
 Amplify.configure(awsconfig)
 
-const initialFormState = { id: '', opcuadata: '' }
+
 
 class App extends Component {
-	state = {fileUrl: ''}
-	componentDidMount(){
-		Storage.get('_2021-5-10-85354_01a0c537-9269-4bf1-9ef4-4c081b4fe3f0.jpg')
-			.then(data => {
-				this.setState({
-					fileUrl: data
-				})
-			})
-			.catch(err =>{
-				console.log('error fetching image')
-			})
-	}
-	const [notes, setNotes] = useState([]);
-	const [formData, setFormData] = useState(initialFormState);
-  
-  useEffect(() => {
-    fetchNotes();
-  }, []);
 	
-async function fetchNotes() {
-    const apiData = await API.graphql({ query: listNotes });
-    setNotes(apiData.data.listNotes.items);
-  }
 
 render() { 
  return (
@@ -43,25 +22,17 @@ render() {
 			<table>
 				<tr>
 				<td>
-				<div label="Quality Results">
-					<button onClick={fetchNotes}>Update Quality-Results</button>
-					<div style={{marginBottom: 30}}>
-					{
-						notes.map(note => (
-						<div key={note.id || note.opcuadata}>
-							<h2>{note.id}</h2>
-							<p>{note.opcuadata}</p>
-						</div>
-						))
-					}
-				</div>
+				
 				</td>
 				<td>
-					<img src={this.state.fileUrl} title=fileUrl />
+					<div className="App">
+					<S3Album path="public/" picker />
+					</div>
 				</td>
 				</tr>
 			</table>
-			</div>
+			
+			
 			<div label="Logistic Results">
 				No results yet
 			</div>
