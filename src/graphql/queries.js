@@ -5,7 +5,6 @@ export const getTodo = /* GraphQL */ `
   query GetTodo($id: ID!) {
     getTodo(id: $id) {
       id
-      name
       opcuadata
       createdAt
       updatedAt
@@ -21,7 +20,6 @@ export const listTodos = /* GraphQL */ `
     listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
         opcuadata
         createdAt
         updatedAt

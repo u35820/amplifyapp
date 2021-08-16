@@ -1,38 +1,69 @@
 import React, { useState, useEffect, Component } from 'react';
 import './App.css';
 import Tabs from "./components/Tabs"; 
-import Amplify, { API, Storage } from 'aws-amplify';
+import Amplify, { API, Storage, Auth, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import { listNotes } from './graphql/queries';
-import { withAuthenticator, AmplifySignOut, S3Album, S3Image } from '@aws-amplify-react'
-
+import {AmplifyS3Album, AmplifyS3ImagePicker, AmplifyS3Image} from "@aws-amplify/ui-react";
+import { listTodos } from './graphql/queries';
 
 Amplify.configure(awsconfig)
 
 
 
-class App extends Component {
-	
+function refreshPage() {
+    window.location.reload(false);
+  }
 
-render() { 
+function App(){
+	
+	const [todos, setTodos] = useState([])
+	
+	useEffect(() => {
+    fetchTodos();
+	}, []);
+	
+	const fetchTodos = async () =>{
+		try{
+			const todoData = await API.graphql(graphqlOperation(listTodos));;
+			const todoList = todoData.data.listTodos.items;
+			console.loge('item list', todoList);
+			setTodos(todoList)
+		}
+		catch(error){
+			console.log('error on fetching items', error)
+		}
+	};
+
  return (
     <div className="App">
       <h1>Production Cell</h1>
 		<Tabs>
-			<table>
+			<div label="Quality Results">
+			<table class="center">
+				<tr><th colspan="2">
+				<button class="buttonStyle" onClick={refreshPage}>Update the Quality-Results</button>
+				</th></tr>
 				<tr>
-				<td>
-				
+				<td width="750">
+					<div className="App">
+					<AmplifyS3Album 
+						picker="false"
+						sort ={(list: StorageObject[]) => {
+								console.log('default acended sorted, before sort output', list);
+								const sortedList: StorageObject[] = list.sort((a:any, b:any) => b['key'].localeCompare(a['key'])); 
+								console.log('after decended sort', sortedList);
+								return sortedList;
+						}}
+					/>
+					</div>
 				</td>
 				<td>
-					<div className="App">
-					<S3Album path="public/" picker />
-					</div>
+					here
 				</td>
 				</tr>
 			</table>
 			
-			
+			</div>
 			<div label="Logistic Results">
 				No results yet
 			</div>
@@ -48,6 +79,6 @@ render() {
     </div>
   );
 }
-}
+
 
 export default App;
