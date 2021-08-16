@@ -1,0 +1,14 @@
+type Todo @model 
+@key(name: "byImagename", fields: ["StationID" , "Imagename"], queryField: "itemsByImagename")
+{
+  id: ID!
+  Imagename: String!
+  StationID: String
+  Classification: String
+  Confidence: String
+  ConfigurationID: String
+  RecipeID: String
+  Type: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}

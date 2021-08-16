@@ -8,7 +8,7 @@
     }
   },
   "api": {
-    "QualityAPI": {
+    "qualityapp": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -17,7 +17,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 360,
-              "description": "apikeydes"
+              "description": "qualityapi"
             }
           },
           "additionalAuthenticationProviders": []

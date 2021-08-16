@@ -5,7 +5,13 @@ export const getTodo = /* GraphQL */ `
   query GetTodo($id: ID!) {
     getTodo(id: $id) {
       id
-      opcuadata
+      Imagename
+      StationID
+      Classification
+      Confidence
+      ConfigurationID
+      RecipeID
+      Type
       createdAt
       updatedAt
     }
@@ -20,7 +26,46 @@ export const listTodos = /* GraphQL */ `
     listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        opcuadata
+        Imagename
+        StationID
+        Classification
+        Confidence
+        ConfigurationID
+        RecipeID
+        Type
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const itemsByImagename = /* GraphQL */ `
+  query ItemsByImagename(
+    $StationID: String
+    $Imagename: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelTodoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    itemsByImagename(
+      StationID: $StationID
+      Imagename: $Imagename
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        Imagename
+        StationID
+        Classification
+        Confidence
+        ConfigurationID
+        RecipeID
+        Type
         createdAt
         updatedAt
       }

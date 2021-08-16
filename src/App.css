@@ -47,6 +47,29 @@ button.buttonStyle:hover {
 .center {
   margin-left: auto;
   margin-right: auto;
+  valgin: top;
+  color: #232f3e;
+	
+}
+
+.tableborder {
+  margin-left: auto;
+  margin-right: auto;
+  border: 0.5px solid;
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: .34em;
+  
+}
+
+.datarow {
+  height: 70px;
+}
+
+.schrift{
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  color: #232f3e;
 }
 
 .todoList {

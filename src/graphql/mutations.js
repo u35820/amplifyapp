@@ -8,7 +8,13 @@ export const createTodo = /* GraphQL */ `
   ) {
     createTodo(input: $input, condition: $condition) {
       id
-      opcuadata
+      Imagename
+      StationID
+      Classification
+      Confidence
+      ConfigurationID
+      RecipeID
+      Type
       createdAt
       updatedAt
     }
@@ -21,7 +27,13 @@ export const updateTodo = /* GraphQL */ `
   ) {
     updateTodo(input: $input, condition: $condition) {
       id
-      opcuadata
+      Imagename
+      StationID
+      Classification
+      Confidence
+      ConfigurationID
+      RecipeID
+      Type
       createdAt
       updatedAt
     }
@@ -34,7 +46,13 @@ export const deleteTodo = /* GraphQL */ `
   ) {
     deleteTodo(input: $input, condition: $condition) {
       id
-      opcuadata
+      Imagename
+      StationID
+      Classification
+      Confidence
+      ConfigurationID
+      RecipeID
+      Type
       createdAt
       updatedAt
     }

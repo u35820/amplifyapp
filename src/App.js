@@ -3,9 +3,8 @@ import './App.css';
 import Tabs from "./components/Tabs"; 
 import Amplify, { API, Storage, Auth, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import {AmplifyS3Album, AmplifyS3ImagePicker, AmplifyS3Image} from "@aws-amplify/ui-react";
-import { listTodos } from './graphql/queries';
-import * as queries from './graphql/queries';
+import {AmplifyS3Album, AmplifyS3Image} from "@aws-amplify/ui-react";
+import { listTodos, itemsByImagename }  from './graphql/queries';
 
 Amplify.configure(awsconfig)
 
@@ -13,10 +12,9 @@ Amplify.configure(awsconfig)
 function refreshPage() {
     window.location.reload(false);
   }
-  
+ 
 
 function App(){
-	
 	const [todos, setTodos] = useState([])
 	
 	useEffect(() => {
@@ -25,8 +23,11 @@ function App(){
 	
 	const fetchTodos = async () =>{
 		try{
-			const todoData = await API.graphql(graphqlOperation(listTodos));;
-			const todoList = todoData.data.listTodos.items;
+			const todoData = await API.graphql(graphqlOperation(itemsByImagename, {
+																StationID: 'AC-01',
+																sortDirection: 'DESC'
+		}																));
+			const todoList = todoData.data.itemsByImagename.items;
 			console.log('item list', todoList);
 			setTodos(todoList)
 		}
@@ -40,14 +41,22 @@ function App(){
       <h1>Production Cell</h1>
 		<Tabs>
 			<div label="Quality Results">
-			<table class="center" width="1350">
-				<tr><th colspan="2">
-				<button class="buttonStyle" onClick={refreshPage}>Update the Quality-Results</button>
+			<table class="center">
+				<tr><th colSpan="2">
+				<button class="buttonStyle" onClick={refreshPage}>Update Quality-Results</button>
 				</th></tr>
+				<tr>
+				<th>
+				Result images:
+				</th>
+				<th>
+				Result information:
+				</th>
+				</tr>
 				<tr>
 				<td width="750">
 					<div className="App">
-					<AmplifyS3Album 
+					<AmplifyS3Album
 						picker="false"
 						sort ={(list: StorageObject[]) => {
 								console.log('default acended sorted, before sort output', list);
@@ -58,14 +67,33 @@ function App(){
 					/>
 					</div>
 				</td>
-				<td>
-					<div style={{marginBottom: 30}}>
+				<td width="800">
+					<div className="todoList">
 						{
 						todos.map(note => (
-						<div key={note.id || note.id}>
-						<h2>{note.id}</h2>
-						<p>{note.opcuadata}</p>
-						
+						<div key={note.id}>
+						<table class="tableborder">
+						<tr class="datarow">
+						<th colSpan="6"><h3>{note.Imagename}</h3></th></tr>
+						<tr height="90"></tr>						
+						<tr class="schrift">
+						<td>Time</td>
+						<td>Type</td>
+						<td>Classification</td>
+						<td>Confidence</td>
+						<td>ConfigurationID</td>
+						<td>RecipeID</td>
+						</tr>
+						<tr height="51">
+						<td>{note.id}</td>
+						<td>{note.Type}</td>
+						<td>{note.Classification}</td>
+						<td>{note.Confidence}</td>
+						<td>{note.ConfigurationID}</td>
+						<td>{note.RecipeID}</td>
+						</tr>
+						<tr height="90"></tr>
+						</table>
 						</div>
 						))
 						}
