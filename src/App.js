@@ -5,14 +5,15 @@ import Amplify, { API, Storage, Auth, graphqlOperation } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import {AmplifyS3Album, AmplifyS3ImagePicker, AmplifyS3Image} from "@aws-amplify/ui-react";
 import { listTodos } from './graphql/queries';
+import * as queries from './graphql/queries';
 
 Amplify.configure(awsconfig)
-
 
 
 function refreshPage() {
     window.location.reload(false);
   }
+  
 
 function App(){
 	
@@ -26,7 +27,7 @@ function App(){
 		try{
 			const todoData = await API.graphql(graphqlOperation(listTodos));;
 			const todoList = todoData.data.listTodos.items;
-			console.loge('item list', todoList);
+			console.log('item list', todoList);
 			setTodos(todoList)
 		}
 		catch(error){
@@ -39,7 +40,7 @@ function App(){
       <h1>Production Cell</h1>
 		<Tabs>
 			<div label="Quality Results">
-			<table class="center">
+			<table class="center" width="1350">
 				<tr><th colspan="2">
 				<button class="buttonStyle" onClick={refreshPage}>Update the Quality-Results</button>
 				</th></tr>
@@ -58,7 +59,17 @@ function App(){
 					</div>
 				</td>
 				<td>
-					here
+					<div style={{marginBottom: 30}}>
+						{
+						todos.map(note => (
+						<div key={note.id || note.id}>
+						<h2>{note.id}</h2>
+						<p>{note.opcuadata}</p>
+						
+						</div>
+						))
+						}
+		</div>
 				</td>
 				</tr>
 			</table>

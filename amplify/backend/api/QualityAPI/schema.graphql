@@ -1,4 +1,6 @@
 type Todo @model {
   id: ID!
   opcuadata: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
 }

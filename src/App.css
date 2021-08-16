@@ -49,6 +49,11 @@ button.buttonStyle:hover {
   margin-right: auto;
 }
 
+.todoList {
+    display: flex;
+    flex-direction: column;
+}
+
 .tab-list {  
   border-bottom: 1px solid #ccc;
   padding-left: 0;
