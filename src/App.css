@@ -1,3 +1,105 @@
+//css von https://codepen.io/faaezahmd/pen/dJeRex
+body {
+  font-family: 'lato', sans-serif;
+}
+.container {
+  max-width: 1000px;
+  min-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+  small {
+    font-size: 0.5em;
+  }
+}
+
+
+  li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  .table-header {
+    background-color: #ffd27f;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    flex: 0 0 auto;
+  }
+ .table-header2 {
+    background-color: #ffc04c;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.00em;
+    margin-bottom: 28px;
+    display: flex;
+    flex: 0 0 auto;
+  }
+  .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    margin-bottom: 85px;
+    flex: 0;
+    flex: 0 0 auto;
+
+  }
+  .col-1 {
+    flex-basis: 20%;
+  }
+  .col-2 {
+    flex-basis: 15%;
+  }
+  .col-3 {
+    flex-basis: 20%;
+  }
+  .col-4 {
+    flex-basis: 25%;
+  }
+  .col-5 {
+    flex-basis: 25%;
+  }
+  .col-6 {
+    flex-basis: 15%;
+  }
+  
+  @media all and (max-width: 767px) {
+    .table-header {
+      display: block;
+    }
+    .table-row{
+      
+    }
+    li {
+      display: block;
+    }
+    .col {
+      
+      flex-basis: 100%;
+      
+    }
+    .col {
+      display: block;
+      padding: 10px 0;
+      &:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
+    }
+  }
+
 .App {
     text-align: center;
     color: #232f3e;
@@ -24,8 +126,17 @@
     color: #232f3e;
 }
 
+.container1 {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
 button.buttonStyle {
-  background-color: orange;
+  background-color: #ffb732;
   border: none;
   color: #232f3e;
   padding: 12px 30px;
@@ -35,7 +146,7 @@ button.buttonStyle {
   font-size: 16px;
   transition-duration: 0.2s;
   border-radius: 6px;
-  border: 2px solid orange;
+  border: 2px solid #ffb732;
 }
 
 button.buttonStyle:hover {
@@ -55,7 +166,6 @@ button.buttonStyle:hover {
 .tableborder {
   margin-left: auto;
   margin-right: auto;
-  border: 0.5px solid;
   text-align: center;
   border-collapse: separate;
   border-spacing: .34em;
@@ -64,11 +174,43 @@ button.buttonStyle:hover {
 
 .datarow {
   height: 70px;
+  border-bottom: 1px solid #ddd;
 }
 
 .schrift{
   font-weight: bold;
   border-bottom: 1px solid #ddd;
+  color: #232f3e;
+}
+
+.schrift2{
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  color: #232f3e;
+}
+
+.schrift3{
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  color: #232f3e;
+}
+
+.schrift4{
+  border-bottom: 1px solid #ddd;
+  color: #232f3e;
+}
+
+.schrift5{
+  border-left: 1px solid #ddd;
+  color: #232f3e;
+}
+
+.schrift6{
+  border-right: 1px solid #ddd;
+  color: #232f3e;
+}
+
+.schrift7{
   color: #232f3e;
 }
 
@@ -84,7 +226,7 @@ button.buttonStyle:hover {
 
 .tab-list-item {
   display: inline-block;
-  background-color: orange;
+  background-color: #ffb732;
   list-style: none;
   margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
@@ -96,11 +238,6 @@ button.buttonStyle:hover {
   color: #232f3e;
   border: solid #ccc;
   border-width: 1px 1px 0 1px;
-}
-
-.amplify-s3-image {
-  --height: 200px;
-  --width: 400px;
 }
 
 @keyframes App-logo-spin {

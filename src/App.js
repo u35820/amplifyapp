@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect, Component, Fragment } from 'react';
 import './App.css';
 import Tabs from "./components/Tabs"; 
 import Amplify, { API, Storage, Auth, graphqlOperation } from 'aws-amplify';
@@ -47,10 +47,10 @@ function App(){
 				</th></tr>
 				<tr>
 				<th>
-				Result images:
+				<h3>Result images:</h3>
 				</th>
 				<th>
-				Result information:
+				<h3>Result information:</h3>
 				</th>
 				</tr>
 				<tr>
@@ -69,47 +69,42 @@ function App(){
 				</td>
 				<td width="800">
 					<div className="todoList">
-						{
+					{
 						todos.map(note => (
 						<div key={note.id}>
-						<table class="tableborder">
-						<tr class="datarow">
-						<th colSpan="6"><h3>{note.Imagename}</h3></th></tr>
-						<tr height="90"></tr>						
-						<tr class="schrift">
-						<td>Time</td>
-						<td>Type</td>
-						<td>Classification</td>
-						<td>Confidence</td>
-						<td>ConfigurationID</td>
-						<td>RecipeID</td>
-						</tr>
-						<tr height="51">
-						<td>{note.id}</td>
-						<td>{note.Type}</td>
-						<td>{note.Classification}</td>
-						<td>{note.Confidence}</td>
-						<td>{note.ConfigurationID}</td>
-						<td>{note.RecipeID}</td>
-						</tr>
-						<tr height="90"></tr>
-						</table>
+						<div class="container">
+							<li class="table-header2">
+							{note.Imagename}
+							</li>
+							<ul class="responsive-table">
+							<li class="table-header">
+								<div class="col col-1">Time</div>
+								<div class="col col-2">Type</div>
+								<div class="col col-3">Classification</div>
+								<div class="col col-4">Confidence</div>
+								<div class="col col-5">ConfigurationID</div>
+								<div class="col col-6">RecipeID</div>				
+							</li>
+							<li class="table-row">
+								<div class="col col-1" data-label="Time">{note.id}</div>
+								<div class="col col-2" data-label="Type">{note.Type}</div>
+								<div class="col col-3" data-label="Classification">{note.Classification}</div>
+								<div class="col col-4" data-label="Confidence">{note.Confidence}</div>
+								<div class="col col-5" data-label="ConfigurationID">{note.ConfigurationID}</div>
+								<div class="col col-6" data-label="RecipeID">{note.RecipeID}</div>
+							</li>							
+							</ul>
+						</div>
 						</div>
 						))
 						}
-		</div>
+					</div>
 				</td>
 				</tr>
 			</table>
 			
 			</div>
 			<div label="Logistic Results">
-				No results yet
-			</div>
-			<div label="Orchestrator">
-				No results yet
-			</div>
-			<div label="Robotics">
 				No results yet
 			</div>
 		</Tabs>
